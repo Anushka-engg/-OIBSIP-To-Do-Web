@@ -1,8 +1,7 @@
 # -OIBSIP-To-Do-Web
 task-2
 
-# To-Do List Application
-
+TO DO WEB 
 This is a simple and elegant To-Do List application built with HTML, CSS, and JavaScript. It allows users to add, edit, mark as complete, and delete tasks. The task list is displayed dynamically, and counters keep track of completed and uncompleted tasks.
 
 ## Features
