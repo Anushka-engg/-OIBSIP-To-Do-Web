@@ -1,14 +1,12 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
-
 function addTask() {
     const task = inputBox.value.trim();
     if (!task) {
         alert("Please write down a task");
         return;
     }
-
-    const li = document.createElement("li"); // Move inside the function
+    const li = document.createElement("li");
     li.innerHTML = `
       <label>
         <input type="checkbox">
@@ -17,23 +15,16 @@ function addTask() {
       <span class="edit-btn">Edit</span>
       <span class="delete-btn">Delete</span>
     `;
-
     listContainer.appendChild(li);
-    inputBox.value = ""; // Clear the input box
-
-    // Add event listeners after the task is added
+    inputBox.value = ""; 
     const checkbox = li.querySelector("input");
     const editBtn = li.querySelector(".edit-btn");
     const taskSpan = li.querySelector("span");
     const deleteBtn = li.querySelector(".delete-btn");
-
-    // Checkbox event: Mark task as completed or not
     checkbox.addEventListener("click", function() {
         li.classList.toggle("completed", checkbox.checked);
         updateCounters();
     });
-
-    // Edit button event: Edit task
     editBtn.addEventListener("click", function() {
         const update = prompt("Edit task:", taskSpan.textContent);
         if (update !== null) {
@@ -43,22 +34,17 @@ function addTask() {
             updateCounters();
         }
     });
-
-    // Delete button event: Remove task
     deleteBtn.addEventListener("click", function() {
         if (confirm("Are you sure you want to delete this task?")) {
             li.remove();
             updateCounters();
         }
     });
-
     updateCounters();
 }
-
 function updateCounters() {
     const completedTasks = document.querySelectorAll(".completed").length;
     const uncompletedTasks = document.querySelectorAll("li:not(.completed)").length;
-
     document.getElementById("completed-counter").textContent = completedTasks;
     document.getElementById("uncompleted-counter").textContent = uncompletedTasks;
 }
